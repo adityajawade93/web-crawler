@@ -1,0 +1,29 @@
+{
+  "name": "web-crawler",
+  "version": "1.0.0",
+  "description": "a program to crawl websites and all its pages to store their urls",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityajawade93/web-crawler.git"
+  },
+  "keywords": [
+    "web",
+    "crawler",
+    "spider"
+  ],
+  "author": "Aditya Jawade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adityajawade93/web-crawler/issues"
+  },
+  "homepage": "https://github.com/adityajawade93/web-crawler#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "mongoose": "^5.6.4",
+    "request": "^2.88.0"
+  }
+}
