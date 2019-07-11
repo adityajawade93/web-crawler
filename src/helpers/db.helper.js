@@ -26,11 +26,12 @@ function updateUrl(link, params) {
             return
         }
         let newParams = url.queryParameters.concat(params)
-        url.queryParameters = [...new Set(newParams)]
-        url.referenceCount = url.referenceCount + 1
-        url.save((err, url) => {
-            if (err) {
+        let queryParameters = [...new Set(newParams)]
+        let referenceCount = url.referenceCount + 1
+        urls.update({ link: link }, { queryParameters, referenceCount }, (err, updatedUrl) => {
+            if(err) {
                 console.log(`failed to update url ${link}`)
+                return
             }
         })
     })
