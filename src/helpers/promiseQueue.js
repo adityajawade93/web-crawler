@@ -22,7 +22,7 @@ class PromiseQueue {
             self.totalPendingRequests++
             requestPromise()
                 .then(body => {
-                    self.resolveAction(body)
+                    self.resolveAction(body, self)
                 })
                 .catch(err => {
                     console.log(err)
