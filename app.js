@@ -1,9 +1,6 @@
-const { connect_db, close_db } = require('./src/helpers/db.helper')
-const Urls = require('./src/models/url')
-
-const connection = connect_db()
-
-connection
+const { connect_db } = require('./src/helpers/db.helper')
+ 
+connect_db()
     .then(() => {
         console.log('successfully connected to database')
     })
