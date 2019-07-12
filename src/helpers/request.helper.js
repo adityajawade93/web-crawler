@@ -1,3 +1,7 @@
+/**
+ * put a promise wrapper aroung request and return that function to call and resolve later, with its url persisting in a closure
+ */
+
 const request = require('request')
 
 function requestPromiseGenerator(url) {

@@ -1,3 +1,8 @@
+/**
+ * a promise queue to maintain the required concurrency levels
+ * 
+ * it keeps track of all pending promises , also applies a resolve action on them on resolving 
+ */
 class PromiseQueue {
     constructor(maxConcurrentRequests=5, resolveAction) {
         this.maxConcurrentRequests = maxConcurrentRequests

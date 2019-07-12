@@ -11,6 +11,14 @@ function close_db() {
     connection.close()
 }
 
+/**
+ * 
+ * @param {*} url link to be saved in url object
+ * @param {*} params link params to be saved
+ * 
+ * this is a wrapper for mongoose create just to streamline the code
+ */
+
 function addUrl(url, params) {
     return urls.create({
         link: url,
@@ -18,6 +26,14 @@ function addUrl(url, params) {
         queryParameters: params
     })
 }
+
+/**
+ * 
+ * @param {*} link link to fetch the required url to update
+ * @param {*} params params to be updated
+ * 
+ * this function fetches an existing url to increase its reference count and update its params
+ */
 
 function updateUrl(link, params) {
     urls.findOne({ link: link }, function (err, url) {

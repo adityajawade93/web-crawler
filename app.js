@@ -1,5 +1,8 @@
 const { connect_db } = require('./src/helpers/db.helper')
- 
+
+/**
+ * connects to database and loads the start.js file in src, to start crawling
+ */
 connect_db()
     .then(() => {
         require('./src/start')
