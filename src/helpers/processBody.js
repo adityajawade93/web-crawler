@@ -3,7 +3,6 @@ const { rootUrl } = require('../config')
 const { requestPromiseGenerator } = require('./request.helper')
 const { addUrl, updateUrl } = require('./db.helper')
 const queryString = require('query-string')
-const seenUrls = {}
 
 /**
  * 
@@ -27,13 +26,10 @@ function processBody(body, queue) {
             params = Object.keys(paramObject)
         }
 
-        if (!seenUrls[url]) {
-            seenUrls[url] = true
-            queue.add(requestPromiseGenerator(url))
-        }
-
         addUrl(url, params)
-            .then(() => {})
+            .then(() => {
+                queue.add(requestPromiseGenerator(url))
+            })
             .catch(err => {
                 updateUrl(url, params)
             })
