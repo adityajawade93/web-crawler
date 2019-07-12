@@ -3,6 +3,7 @@ const { rootUrl } = require('../config')
 const { requestPromiseGenerator } = require('./request.helper')
 const { addUrl, updateUrl } = require('./db.helper')
 const queryString = require('query-string')
+const seenUrls = {}
 
 function processBody(body, queue) {
     const loadedData = cheerio.load(body)
@@ -15,14 +16,18 @@ function processBody(body, queue) {
             const paramObject = queryString.parse(qs)
             params = Object.keys(paramObject)
         }
-        addUrl(url, params)
-         .then(() => {
+
+        if (!seenUrls[url]) {
+            seenUrls[url] = true
             queue.add(requestPromiseGenerator(url))
-         })
-         .catch(err => {
-            updateUrl(url, params)
-         })
-    }) 
+        }
+
+        addUrl(url, params)
+            .then(() => {})
+            .catch(err => {
+                updateUrl(url, params)
+            })
+    })
 }
 
 module.exports = processBody
