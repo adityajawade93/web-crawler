@@ -12,7 +12,7 @@ class PromiseQueue {
     }
 
     runAnother() {
-        return (this.totalPendingRequests < this.maxConcurrentRequests) && this.queue.length
+        return (this.totalPendingRequests < this.maxConcurrentRequests) && this.queue.length > 0
     }
 
     run() {
