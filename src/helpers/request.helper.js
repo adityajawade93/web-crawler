@@ -10,10 +10,10 @@ function requestPromiseGenerator(url) {
                     return
                 }
 
-                if (response.statusCode === 200) {
+                if (response && response.statusCode === 200) {
                     resolve(body)
                 } else {
-                    reject(`request failed for url ${url}`)
+                    reject(`request failed for url ${url} with statusCode ${(response &&  response.statusCode) || 'Unknown'}`)
                 }
             })
         })
